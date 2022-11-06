@@ -10,6 +10,13 @@ export const CardContainer = styled.div<CardStyle>`
   display: flex;
   align-items: flex-end;
 
+  &:hover {
+    filter: brightness(1.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    transform: scale(1.1);
+  }
+
   ${({ category }) => category ? css`
     background-size: contain;
     background-repeat: no-repeat;
