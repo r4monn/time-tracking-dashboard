@@ -80,3 +80,11 @@ export const NavigationMenu = styled.div`
     }
   }
 `;
+
+interface ActiveProps {
+  white?: string;
+}
+
+export const Active = styled.li<ActiveProps>`
+  color: ${props => props.white} !important;
+`;

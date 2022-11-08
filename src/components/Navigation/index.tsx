@@ -1,6 +1,25 @@
-import { NavigationContainer, NavigationHeader, NavigationMenu } from './styles'
+import { useContext } from 'react'
+import { DashboardsContext } from '../../contexts/DashboardsContext'
+import { Active, NavigationContainer, NavigationHeader, NavigationMenu } from './styles'
 
 export function Navigation() {
+
+  const contexto = useContext(DashboardsContext)
+
+  function handleActiveTimeframe(e: any) {
+
+    let selectedTimeframe = e.target.textContent.toLowerCase();
+
+    switch (selectedTimeframe) {
+      case "daily": contexto?.setActiveTimeframe("daily")
+        break;
+      case "weekly": contexto?.setActiveTimeframe("weekly")
+        break;
+      case "monthly": contexto?.setActiveTimeframe("monthly")
+        break;
+    }
+  }
+
   return (
     <NavigationContainer>
       <NavigationHeader>
@@ -14,9 +33,9 @@ export function Navigation() {
       </NavigationHeader>
       <NavigationMenu>
         <ul>
-          <li><a href='/'>Daily</a></li>
-          <li><a href='/'>Weekly</a></li>
-          <li><a href='/'>Monthly</a></li>
+          <Active onClick={handleActiveTimeframe} white={contexto?.activeTimeframe === "daily" ? "white" : ""}>Daily</Active>
+          <Active onClick={handleActiveTimeframe} white={contexto?.activeTimeframe === "weekly" ? "white" : ""}>Weekly</Active>
+          <Active onClick={handleActiveTimeframe} white={contexto?.activeTimeframe === "monthly" ? "white" : ""}>Monthly</Active>
         </ul>
       </NavigationMenu>
     </NavigationContainer>

@@ -1,10 +1,9 @@
 import { Container, Content } from "./styles/styles";
 import { Navigation } from "./components/Navigation"
 import { Card } from "./components/Card";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-interface Dashboard {
+export interface Dashboard {
   id: number;
   title: string;
   timeframes: {
@@ -36,17 +35,17 @@ function App() {
       })
   }, [])
 
+
   return (
     <Container>
       <Content>
         <Navigation />
-        {dashboards.map((dashboard) => (
+        {dashboards.map((dashboard, index) => (
           <Card
-            key={dashboard.id}
+            key={index}
             name={dashboard.title}
             category={dashboard.title}
-            currentTime={dashboard.timeframes.weekly.current}
-            previousTime={dashboard.timeframes.weekly.previous}
+            timeframes={dashboard.timeframes}
           />
         ))}
       </Content>
