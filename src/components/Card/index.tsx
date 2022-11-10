@@ -27,7 +27,7 @@ export function Card({ name, timeframes, category }: CardProps) {
   const contexto = useContext(DashboardsContext)
 
   return (
-    <CardContainer category={category.toLowerCase()}>
+    <CardContainer category={category}>
       <Details>
         <div>
           <h2>{name}</h2>

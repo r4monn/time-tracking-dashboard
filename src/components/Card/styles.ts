@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface CardStyle {
-  category: "work" | "play" | "study" | "exercise" | "social" | "self care";
+  category: "work" | "play" | "study" | "exercise" | "social" | "self care" | string;
 }
 
 export const CardContainer = styled.div<CardStyle>`
